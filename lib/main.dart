@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'QRcode app',
+      title: 'QRcodeApp',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -22,9 +22,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
-      home: const MyHomePage(title: 'QR code app'),
+      home: const MyHomePage(title: 'QRcodeApp'),
     );
   }
 }
@@ -96,20 +96,36 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              '現在のポイント数', style: TextStyle(fontSize: 36),
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              '$_counter\n\n\n',
+              style: TextStyle(fontSize: 36, color: Colors.black),
             ),
+
+            Text(
+              '現在のランク', style: TextStyle(fontSize: 36),
+            ),
+            if(_counter < 10)
+              Text(
+                'ブロンズ', style: TextStyle(fontSize: 36, color: Colors.brown),
+              ),
+            if((_counter >= 10) & (_counter < 20))
+              Text(
+                'シルバー', style: TextStyle(fontSize: 36, color: Colors.grey),
+              ),
+            if(_counter >= 20)
+              Text(
+                'ゴールド', style: TextStyle(fontSize: 36, color: Colors.yellow),
+              ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
-        tooltip: 'Scan',
-        child: Icon(Icons.camera),
-      ),  // This trailing comma makes auto-formatting nicer for build methods.
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
