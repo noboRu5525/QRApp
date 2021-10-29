@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/info.dart';
+import 'package:myapp/inquiry.dart';
+
+import 'my_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -6,7 +10,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -73,7 +76,52 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text('QRcodeapp'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+                child: Text(
+                  'Menu',
+                  style: TextStyle(
+                    fontSize:24,
+                    color: Colors.white,
+                  ),
+        ),
+        decoration: BoxDecoration(
+                  color: Colors.teal,
+        ),
+      ),
+      ListTile(
+        title: Text('お知らせ'),
+        onTap:() {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Info()),
+          );
+        }
+      ),
+            ListTile(
+              title: Text('マイページ'),
+                onTap:() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => My_Page()),
+                  );
+                }
+            ),
+            ListTile(
+                title: Text('お問い合わせ'),
+                onTap:() {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Inquiry()),
+                  );
+                }
+            ),
+      ],
+      ),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -100,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter\n\n\n',
-              style: TextStyle(fontSize: 36, color: Colors.black),
+              style: TextStyle(fontSize: 42, color: Colors.black),
             ),
 
             Text(
@@ -108,15 +156,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             if(_counter < 10)
               Text(
-                'ブロンズ', style: TextStyle(fontSize: 36, color: Colors.brown),
+                'ブロンズ', style: TextStyle(fontSize: 40, color: Colors.brown),
               ),
             if((_counter >= 10) & (_counter < 20))
               Text(
-                'シルバー', style: TextStyle(fontSize: 36, color: Colors.grey),
+                'シルバー', style: TextStyle(fontSize: 40, color: Colors.grey),
               ),
             if(_counter >= 20)
               Text(
-                'ゴールド', style: TextStyle(fontSize: 36, color: Colors.yellow),
+                'ゴールド', style: TextStyle(fontSize: 40, color: Colors.yellow),
               ),
           ],
         ),
